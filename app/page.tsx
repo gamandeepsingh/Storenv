@@ -1,7 +1,3 @@
 export default function Home() {
-  return (
-    <>
-    APP
-    </>
-  );
+  return <>APP</>;
 }
