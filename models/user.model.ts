@@ -12,9 +12,6 @@ const userSchema = new Schema(
       required: [true, "email is required"],
       unique: [true, "email is already taken"],
     },
-    // password: {
-    //   type: String,
-    // },
     image: {
       type: String,
       default: "https://xsgames.co/randomusers/avatar.php?g=pixel",

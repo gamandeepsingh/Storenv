@@ -3,6 +3,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GithubIcon, TwitterIcon, LinkedinIcon, HeartIcon, MailIcon } from 'lucide-react';
+import { redirect } from 'next/navigation';
+
+const Items = [
+  { name: "Home", link: "/" },
+  { name: "About", link: "/about" },
+  { name: "Env", link: "/env" },
+];
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -33,14 +40,14 @@ const Footer: React.FC = () => {
           >
             <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
             <ul className="space-y-2">
-              {['Home', 'About', 'Env'].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-indigo-500 transition-colors"
+              {Items.map((item,ind) => (
+                <li key={ind}>
+                  <span
+                    onClick={()=> redirect(item.link)}
+                    className="text-gray-600 hover:text-indigo-500 transition-colors cursor-pointer"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -56,7 +63,8 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold text-gray-900">Connect</h3>
             <div className="flex space-x-4">
               <motion.a
-                href="#"
+                href="https://github.com/gamandeepsingh/Storenv"
+                target='_blank'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-gray-600 hover:text-indigo-500 transition-colors"
@@ -64,7 +72,8 @@ const Footer: React.FC = () => {
                 <GithubIcon size={20} />
               </motion.a>
               <motion.a
-                href="#"
+                href="https://x.com/GamandeepSingh4"
+                target='_blank'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-gray-600 hover:text-indigo-500 transition-colors"
@@ -72,7 +81,8 @@ const Footer: React.FC = () => {
                 <TwitterIcon size={20} />
               </motion.a>
               <motion.a
-                href="#"
+                href="https://www.linkedin.com/in/gamandeep-singh-344001256/"
+                target='_blank'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-gray-600 hover:text-indigo-500 transition-colors"
@@ -80,7 +90,7 @@ const Footer: React.FC = () => {
                 <LinkedinIcon size={20} />
               </motion.a>
               <motion.a
-                href="#"
+                href="mailto:gamandeepsingh6@gmail.com"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-gray-600 hover:text-indigo-500 transition-colors"

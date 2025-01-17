@@ -1,9 +1,16 @@
+import { NextAuthOptions, User as NextAuthUser } from "next-auth";
 import connectDB from "@/config/database";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import User from "@/models/user.model";
 
-export const authOptions = {
+declare module "next-auth" {
+  interface Session {
+    user: NextAuthUser & { id: string };
+  }
+}
+
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -22,24 +29,30 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ profile }: { profile: { email: string; name: string,image:string } }) {
+    async signIn({ profile }) {
+      if (!profile?.email) {
+        return false; // Reject sign in if no email
+      }
       await connectDB();
       const existUser = await User.findOne({ email: profile.email });
       if (!existUser) {
         await User.create({
-          username: profile.name,
+          username: profile.name || "",
           email: profile.email,
           password: "",
-          image: profile.image,
+          image: profile.image || "",
         });
       }
       return true;
     },
-    async session({ session }:{
-      session: { user: { email: string; id: string | undefined } }
-    }) {
-      const user = await User.findOne({ email: session.user.email });
-      session.user.id = user?._id.toString();
+    async session({ session, token }) {
+      if (session.user) {
+        const user = await User.findOne({ email: session.user.email });
+        session.user = {
+          ...session.user,
+          id: user?._id.toString() || token.sub || "",
+        };
+      }
       return session;
     },
   },

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body className="">
           <Navbar />
           <Suspense fallback={<Loading/>}>
+          <Toaster position="bottom-center" />
           {children}
           </Suspense>
           <Footer />
