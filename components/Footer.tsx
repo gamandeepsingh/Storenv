@@ -4,6 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GithubIcon, TwitterIcon, LinkedinIcon, HeartIcon, MailIcon } from 'lucide-react';
 import { redirect } from 'next/navigation';
+import Image from 'next/image';
+import logo from "@/public/logo.png"
 
 const Items = [
   { name: "Home", link: "/" },
@@ -25,7 +27,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold text-gray-900">Storenv</h3>
+            <Image src={logo} alt="Storenv logo" width={0} height={0} className="w-44" />
             <p className="text-gray-600">
             Your secure solution for managing environment variables across projects.
             </p>

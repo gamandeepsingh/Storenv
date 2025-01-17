@@ -9,14 +9,20 @@ import {
   Check,
   Plus,
   X,
-  Save,
   Loader,
   Edit,
   Eye,
   EyeOff,
+  Trash2
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Storenv | Environment Variables",
+//   description: "Storenv is a platform for managing your environment variables",
+// };
 
 // Define types for our data structures
 interface EnvVariable {
@@ -89,6 +95,33 @@ const EnvPage: React.FC = () => {
       console.error("Failed to copy text: ", err);
     }
   };
+
+  const handleDelete = async (envId: string) => {
+    if (window.confirm('Are you sure you want to delete this environment?')) {
+      toast.promise(
+        fetch(`/api/upload/${envId}`, {
+          method: 'DELETE',
+        }).then(response => {
+          if (!response.ok) {
+            return toast.error('Failed to delete environment');
+          }
+          return response;
+        }),
+        {
+          loading: 'Deleting environment...',
+          success: 'Environment deleted successfully',
+          error: 'Failed to delete environment',
+        }
+      );
+  
+      try {
+        await fetchEnvs(); // Refresh the list
+      } catch (error) {
+        console.error('Error refreshing environments:', error);
+      }
+    }
+  };
+  
 
   const copyEntireProject = (env: EnvProject) => {
     const text = env.envlist
@@ -297,23 +330,26 @@ const EnvPage: React.FC = () => {
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-semibold">{env.projectName}</h2>
                   <div className="flex space-x-2">
-                    <button
-                      onClick={() => startEditing(env)}
-                      className="text-blue-500 hover:text-blue-700"
-                    >
-                      <Edit size={20} />
-                    </button>
-                    <button
-                      onClick={() => copyEntireProject(env)}
-                      className="text-blue-500 hover:text-blue-700"
-                    >
-                      {copiedStates[env._id] ? (
-                        <Check size={20} />
-                      ) : (
-                        <Copy size={20} />
-                      )}
-                    </button>
-                  </div>
+    <button
+      onClick={() => startEditing(env)}
+      className="text-blue-500 hover:text-blue-700"
+    >
+      <Edit size={20} />
+    </button>
+    <button
+      onClick={() => copyEntireProject(env)}
+      className="text-blue-500 hover:text-blue-700"
+    >
+      {copiedStates[env._id] ? <Check size={20} /> : <Copy size={20} />}
+    </button>
+    <button
+      onClick={() => handleDelete(env._id)}
+      className="text-red-500 hover:text-red-700"
+    >
+      <Trash2 size={20} />
+    </button>
+  </div>
+
                 </div>
                 <ul className="space-y-4 rounded-lg py-4 px-1 bg-white">
                   {env.envlist.map((item, index) => (

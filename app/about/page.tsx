@@ -3,6 +3,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Key, RefreshCw, Database, Cloud } from 'lucide-react';
+// import { Metadata } from 'next';
+
+// export const metadata: Metadata = {
+//   title: "Storenv | About",
+//   description: "Learn more about Storenv and how it can help you manage your environment variables securely.",
+// };
 
 const features = [
   {

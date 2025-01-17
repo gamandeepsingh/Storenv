@@ -4,6 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X, Save, Loader } from "lucide-react";
 import toast from "react-hot-toast";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Storenv | Add Environment Variables",
+//   description: "Add environment variables to your project securely.",
+// };
 
 interface EnvVariable {
   name: string;

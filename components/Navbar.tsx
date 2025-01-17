@@ -13,6 +13,8 @@ import {
 } from "next-auth/react";
 import { Github } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
+import logo from "@/public/logo.png"
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", link: "/", icon: <Home size={20} /> },
@@ -49,7 +51,7 @@ const Navbar: React.FC = () => {
             className="flex items-center cursor-pointer"
             onClick={() => redirect("/")}
           >
-            <span className="text-xl font-bold text-gray-800">Storenv</span>
+            <Image src={logo} alt="Storenv logo" width={0} height={0} className="w-44" />
           </motion.div>
 
           {/* Desktop Menu */}
