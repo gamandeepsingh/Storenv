@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname:"lh3.googleusercontent.com",
         pathname:"**",
+      },
+      {
+        protocol: "https",
+        hostname:"avatars.githubusercontent.com",
+        pathname:"**",
       }
     ]
   }

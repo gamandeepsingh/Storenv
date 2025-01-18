@@ -24,6 +24,8 @@ const navItems = [
 
 const Navbar: React.FC = () => {
   const { data: session } = useSession();
+  console.log(session);
+  
   const profileImage = session?.user?.image;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
