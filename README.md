@@ -81,16 +81,16 @@ npm run dev
 
 ## API Routes
 
-### `POST /api/envs`
+### `POST /api/upload`
 Creates a new environment configuration
 
 ### `GET /api/envs`
 Retrieves all environment configurations for the authenticated user
 
-### `PUT /api/envs/[id]`
+### `PUT /api/upload/[id]`
 Updates an existing environment configuration
 
-### `DELETE /api/envs/[id]`
+### `DELETE /api/upload/[id]`
 Deletes an environment configuration
 
 ## Contributing
