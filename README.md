@@ -37,7 +37,7 @@ Storenv is a secure environment variable storage and management solution built w
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/storenv.git
+git clone https://github.com/gamandeepsingh/storenv
 ```
 2. Install dependencies:
 ```bash
