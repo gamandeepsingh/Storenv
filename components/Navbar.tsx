@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
                 ></Image>
                 <button
                   className="text-gray-600 hover:text-gray-900"
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: '/' })}
                 >
                   <LogOut size={24} />
                 </button>
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
                 <div className="pt-2 pb-3 flex gap-4 items-center">
                   <motion.button
                     className="bg-indigo-500 text-white flex items-center gap-2 px-5 py-2 rounded-md"
-                    onClick={() => signOut()}
+                    onClick={() => signOut({ callbackUrl: '/' })}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: -100 }}
