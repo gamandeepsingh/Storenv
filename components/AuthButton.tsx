@@ -9,6 +9,11 @@ interface AuthButtonProps {
   className?: string;
 }
 
+interface Provider {
+  id: string;
+  name: string;
+}
+
 const getProviderIcon = (provider: string) => {
   switch (provider.toLowerCase()) {
     case 'github':
@@ -74,7 +79,7 @@ export const AuthButton: React.FC<AuthButtonProps> = ({
 };
 
 export const AuthButtonGroup: React.FC<{
-  providers: Record<string, any>;
+  providers: Record<string, Provider>;
   onProviderClick: (providerId: string) => void;
   isLoading?: boolean;
   className?: string;

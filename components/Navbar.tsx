@@ -88,11 +88,13 @@ const Navbar: React.FC = () => {
 
             {session && (
               <div className="flex gap-4 items-center">
-                <img
+                <Image
                   className="w-10 h-10 rounded"
                   src={profileImage || ""}
                   alt="Default avatar"
-                ></img>
+                  width={0}
+                  height={0}
+                ></Image>
                 <button
                   className="text-gray-600 hover:text-gray-900"
                   onClick={() => signOut()}

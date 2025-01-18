@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import connectDB from '@/config/database';
 import Env from '@/models/env.model';
 import User from '@/models/user.model';
@@ -14,7 +14,7 @@ function decryptValue(encryptedValue: string): string {
   return bytes.toString(CryptoJS.enc.Utf8);
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     await connectDB();
 

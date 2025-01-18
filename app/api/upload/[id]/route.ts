@@ -15,8 +15,9 @@ function encryptValue(value: string): string {
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const id = (await params).id
   try {
     await connectDB();
 
@@ -26,14 +27,14 @@ export async function PUT(
     }
 
     const { projectName, envlist } = await req.json();
-    const projectId = params.id;
+    const projectId = id;
 
     const user = await User.findOne({ email: session.user.email });
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    let env = await Env.findOne({ _id: projectId, user: user._id });
+    const env = await Env.findOne({ _id: projectId, user: user._id });
     if (!env) {
       return NextResponse.json(
         { message: "Environment not found" },
@@ -72,8 +73,9 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const id = (await params).id
   try {
     await connectDB();
 
@@ -82,7 +84,7 @@ export async function DELETE(
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const projectId = params.id;
+    const projectId = id;
 
     const user = await User.findOne({ email: session.user.email });
     if (!user) {

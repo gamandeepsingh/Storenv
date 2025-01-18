@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Shield, Lock, Key, RefreshCw, Database, Cloud } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Shield, Lock, Key, RefreshCw, Database, Cloud } from "lucide-react";
 // import { Metadata } from 'next';
 
 // export const metadata: Metadata = {
@@ -13,33 +13,39 @@ import { Shield, Lock, Key, RefreshCw, Database, Cloud } from 'lucide-react';
 const features = [
   {
     icon: <Shield className="text-indigo-500" size={24} />,
-    title: 'Secure Storage',
-    description: 'Your environment variables are encrypted using industry-standard algorithms before storage.',
+    title: "Secure Storage",
+    description:
+      "Your environment variables are encrypted using industry-standard algorithms before storage.",
   },
   {
     icon: <Lock className="text-indigo-500" size={24} />,
-    title: 'Access Control',
-    description: 'Fine-grained permissions ensure only authorized team members can access specific environment variables.',
+    title: "Access Control",
+    description:
+      "Fine-grained permissions ensure only authorized team members can access specific environment variables.",
   },
   {
     icon: <Key className="text-indigo-500" size={24} />,
-    title: 'Key Management',
-    description: 'Robust key rotation and management system to maintain the highest security standards.',
+    title: "Key Management",
+    description:
+      "Robust key rotation and management system to maintain the highest security standards.",
   },
   {
     icon: <RefreshCw className="text-indigo-500" size={24} />,
-    title: 'Version Control',
-    description: 'Track changes and maintain a history of your environment configurations.',
+    title: "Version Control",
+    description:
+      "Track changes and maintain a history of your environment configurations.",
   },
   {
     icon: <Database className="text-indigo-500" size={24} />,
-    title: 'Multiple Environments',
-    description: 'Easily manage different configurations for development, staging, and production environments.',
+    title: "Multiple Environments",
+    description:
+      "Easily manage different configurations for development, staging, and production environments.",
   },
   {
     icon: <Cloud className="text-indigo-500" size={24} />,
-    title: 'Cloud Integration',
-    description: 'Seamlessly integrate with popular cloud platforms and CI/CD pipelines.',
+    title: "Cloud Integration",
+    description:
+      "Seamlessly integrate with popular cloud platforms and CI/CD pipelines.",
   },
 ];
 
@@ -58,8 +64,9 @@ const About: React.FC = () => {
             Welcome to Storenv
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Your secure solution for managing environment variables across projects.
-            We make it easy to store, manage, and protect your sensitive configuration data.
+            Your secure solution for managing environment variables across
+            projects. We make it easy to store, manage, and protect your
+            sensitive configuration data.
           </p>
         </motion.div>
 
@@ -96,14 +103,13 @@ const About: React.FC = () => {
           </h2>
           <div className="prose prose-indigo max-w-none">
             <p className="text-gray-600 mb-4">
-              Storenv was built with security and ease of use in mind. We understand
-              the challenges of managing environment variables across different
-              projects and environments. Our platform provides a secure, centralized
-              solution for storing and managing sensitive configuration data.
+              Storenv was built with security and ease of use in mind. We
+              understand the challenges of managing environment variables across
+              different projects and environments. Our platform provides a
+              secure, centralized solution for storing and managing sensitive
+              configuration data.
             </p>
-            <p className="text-gray-600 mb-4">
-              With Storenv, you can:
-            </p>
+            <p className="text-gray-600 mb-4">With Storenv, you can:</p>
             <ul className="list-disc list-inside text-gray-600 mb-4">
               <li>Securely store and manage environment variables</li>
               <li>Control access with fine-grained permissions</li>
@@ -113,9 +119,9 @@ const About: React.FC = () => {
               <li>Ensure compliance with security standards</li>
             </ul>
             <p className="text-gray-600">
-              Whether you're a solo developer or part of a large team, Storenv
-              provides the tools you need to manage your environment variables
-              securely and efficiently.
+              Whether you&apos;re a solo developer or part of a large team,
+              Storenv provides the tools you need to manage your environment
+              variables securely and efficiently.
             </p>
           </div>
         </motion.div>
