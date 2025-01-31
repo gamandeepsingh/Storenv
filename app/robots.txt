@@ -1,0 +1,11 @@
+// app/robots.js
+export default function robots() {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/env/',
+    },
+    sitemap: 'https://storenv.vercel.app/sitemap.xml',
+  }
+}

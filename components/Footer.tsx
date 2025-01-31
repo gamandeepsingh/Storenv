@@ -1,11 +1,20 @@
-"use client"
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { GithubIcon, TwitterIcon, LinkedinIcon, HeartIcon, MailIcon } from 'lucide-react';
-import { redirect } from 'next/navigation';
-import Image from 'next/image';
-import logo from "@/public/logo.png"
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  GithubIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  HeartIcon,
+  MailIcon,
+  Send,
+} from "lucide-react";
+import { redirect } from "next/navigation";
+import Image from "next/image";
+import emailjs from "emailjs-com";
+import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 const Items = [
   { name: "Home", link: "/" },
@@ -14,22 +23,81 @@ const Items = [
 ];
 
 const Footer: React.FC = () => {
+  const { data: session } = useSession();
+  const name = session?.user?.name || "Guest";
+  const email = session?.user?.email || "";
   const currentYear = new Date().getFullYear();
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    if (!message.trim()) {
+      toast.error("Please enter a message before sending.");
+      return;
+    }
+
+    const templateParams = {
+      user_name: name, // User's name (from session or "Guest")
+      user_email: email || "No email provided", // User's email or fallback text
+      message: message, // The message content
+    };
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID || "",
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY || ""
+      )
+      .then(
+        () => {
+          toast.success("Message sent successfully!");
+          setMessage(""); // Clear input field after success
+          setLoading(false);
+        },
+        (error) => {
+          console.error("Email sending error:", error);
+          toast.error("Failed to send message. Please try again.");
+          setLoading(false);
+        }
+      );
+  };
 
   return (
-    <footer className="bg-white/80 backdrop-blur-md border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Company Info */}
+    <footer className="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand & Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="space-y-4"
           >
-            <Image src={logo} alt="Storenv logo" width={0} height={0} className="w-44" />
-            <p className="text-gray-600">
-            Your secure solution for managing environment variables across projects.
+            <Image
+              src={
+                "https://res.cloudinary.com/dib0peewu/image/upload/v1738348919/logo_lg5hvq.webp"
+              }
+              alt="Storenv Logo"
+              width={160}
+              height={40}
+              className="w-44 block dark:hidden"
+            />
+            <Image
+              src={
+                "https://res.cloudinary.com/dib0peewu/image/upload/v1738357213/0f0e31a1-47c0-4fe8-a5dd-0bf1653a0cb5_qobjip.png"
+              }
+              alt="Storenv Logo"
+              width={160}
+              height={40}
+              className="w-44 hidden dark:block"
+            />
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              Your secure solution for managing environment variables across
+              projects.
             </p>
           </motion.div>
 
@@ -40,13 +108,15 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
-              {Items.map((item,ind) => (
+              {Items.map((item, ind) => (
                 <li key={ind}>
                   <span
-                    onClick={()=> redirect(item.link)}
-                    className="text-gray-600 hover:text-indigo-500 transition-colors cursor-pointer"
+                    onClick={() => redirect(item.link)}
+                    className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all cursor-pointer text-sm"
                   >
                     {item.name}
                   </span>
@@ -62,56 +132,82 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold text-gray-900">Connect</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Get in Touch
+            </h3>
             <div className="flex space-x-4">
-              <motion.a
-                href="https://github.com/gamandeepsingh/Storenv"
-                target='_blank'
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="text-gray-600 hover:text-indigo-500 transition-colors"
-              >
-                <GithubIcon size={20} />
-              </motion.a>
-              <motion.a
-                href="https://x.com/GamandeepSingh4"
-                target='_blank'
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="text-gray-600 hover:text-indigo-500 transition-colors"
-              >
-                <TwitterIcon size={20} />
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/gamandeep-singh-344001256/"
-                target='_blank'
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="text-gray-600 hover:text-indigo-500 transition-colors"
-              >
-                <LinkedinIcon size={20} />
-              </motion.a>
-              <motion.a
-                href="mailto:gamandeepsingh6@gmail.com"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="text-gray-600 hover:text-indigo-500 transition-colors"
-              >
-                <MailIcon size={20} />
-              </motion.a>
+              {[
+                {
+                  link: "https://github.com/gamandeepsingh/Storenv",
+                  icon: GithubIcon,
+                },
+                { link: "https://x.com/GamandeepSingh4", icon: TwitterIcon },
+                {
+                  link: "https://www.linkedin.com/in/gamandeep-singh-344001256/",
+                  icon: LinkedinIcon,
+                },
+                { link: "mailto:gamandeepsingh6@gmail.com", icon: MailIcon },
+              ].map(({ link, icon: Icon }, i) => (
+                <motion.a
+                  key={i}
+                  href={link}
+                  target="_blank"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all"
+                >
+                  <Icon size={20} />
+                </motion.a>
+              ))}
             </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="space-y-4"
+          >
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Send a Message
+            </h3>
+            <form
+              onSubmit={sendEmail}
+              className="relative flex flex-col bg-white dark:bg-gray-700 rounded-lg shadow-sm p-4 space-y-3"
+            >
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Write your message..."
+                className="bg-transparent flex-1 px-3 py-2 text-sm text-gray-700 dark:text-gray-200 focus:outline-none resize-none min-h-[100px]"
+              />
+              <button
+                type="submit"
+                className="bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-600 transition-all flex items-center gap-1 self-end"
+                disabled={loading}
+              >
+                <Send size={16} />{" "}
+                <span>{loading ? "Sending..." : "Send"}</span>
+              </button>
+            </form>
           </motion.div>
         </div>
 
-        {/* Copyright */}
+        {/* Footer Bottom */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8 pt-8 border-t border-gray-200"
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-600 dark:text-gray-400"
         >
-          <p className="text-center text-gray-600 flex items-center justify-center">
-            Made with <HeartIcon size={16} className="mx-1 text-red-500" /> © {currentYear}
+          <p>
+            Made with{" "}
+            <HeartIcon
+              size={16}
+              className="inline-block text-indigo-500 mx-1"
+            />
+            © {currentYear} Storenv. All rights reserved.
           </p>
         </motion.div>
       </div>
