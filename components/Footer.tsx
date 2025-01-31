@@ -33,11 +33,11 @@ const Footer: React.FC = () => {
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     if (loading) return;
-    setLoading(true);
     if (!message.trim()) {
       toast.error("Please enter a message before sending.");
       return;
     }
+    setLoading(true);
 
     const templateParams = {
       user_name: name, // User's name (from session or "Guest")
