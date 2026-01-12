@@ -138,15 +138,15 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               {[
                 {
-                  link: "https://github.com/gamandeepsingh/Storenv",
+                  link: "https://github.com/akshay-agnihotri/StoreEnv",
                   icon: GithubIcon,
                 },
-                { link: "https://x.com/GamandeepSingh4", icon: TwitterIcon },
+                { link: "https://x.com/akshay_agni_96", icon: TwitterIcon },
                 {
-                  link: "https://www.linkedin.com/in/gamandeep-singh-344001256/",
+                  link: "https://www.linkedin.com/in/akshay-agnihotri-489926246/",
                   icon: LinkedinIcon,
                 },
-                { link: "mailto:gamandeepsingh6@gmail.com", icon: MailIcon },
+                { link: "mailto:agnihotriakshay36@gmail.com", icon: MailIcon },
               ].map(({ link, icon: Icon }, i) => (
                 <motion.a
                   key={i}
