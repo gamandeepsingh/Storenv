@@ -32,8 +32,7 @@ const features = [
   {
     icon: <RefreshCw className="text-indigo-500" size={24} />,
     title: "Version Control",
-    description:
-      "Track changes and maintain a history of your environment configurations.",
+    description: "Track changes and maintain a history of your environment configurations.",
   },
   {
     icon: <Database className="text-indigo-500" size={24} />,
@@ -44,8 +43,7 @@ const features = [
   {
     icon: <Cloud className="text-indigo-500" size={24} />,
     title: "Cloud Integration",
-    description:
-      "Seamlessly integrate with popular cloud platforms and CI/CD pipelines.",
+    description: "Seamlessly integrate with popular cloud platforms and CI/CD pipelines.",
   },
 ];
 
@@ -61,14 +59,11 @@ const About: React.FC = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-7xl font-bold text-gray-900 dark:text-gray-500 mb-4 mt-20">
-            Welcome to <span className="text-indigo-500 dark:text-indigo-400">
-              Storenv
-            </span>
+            Welcome to <span className="text-indigo-500 dark:text-indigo-400">Storenv</span>
           </h1>
           <p className="text-base md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Your secure solution for managing environment variables across
-            projects. We make it easy to store, manage, and protect your
-            sensitive configuration data.
+            Your secure solution for managing environment variables across projects. We make it easy
+            to store, manage, and protect your sensitive configuration data.
           </p>
         </motion.div>
 
@@ -88,9 +83,7 @@ const About: React.FC = () => {
                   {feature.title}
                 </h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-400">
-                {feature.description}
-              </p>
+              <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -103,27 +96,17 @@ const About: React.FC = () => {
           className="bg-gradient-to-r from-white via-gray-100 to-gray-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 rounded-xl p-6 md:p-10 shadow-xl border border-gray-200 dark:border-gray-700"
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white text-center mb-6">
-            🚀 Why Choose{" "}
-            <span className="text-indigo-500 dark:text-indigo-400">
-              Storenv?
-            </span>
+            🚀 Why Choose <span className="text-indigo-500 dark:text-indigo-400">Storenv?</span>
           </h2>
 
           <div className="prose prose-lg prose-indigo dark:prose-invert max-w-none text-center md:text-left">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                Storenv
-              </span>{" "}
-              was built with <strong>security</strong> and{" "}
-              <strong>ease of use</strong> in mind. Managing environment
-              variables across multiple projects and environments can be
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400">Storenv</span>{" "}
+              was built with <strong>security</strong> and <strong>ease of use</strong> in mind.
+              Managing environment variables across multiple projects and environments can be
               challenging—Storenv simplifies the process with a{" "}
-              <span className="underline decoration-indigo-400">secure</span>{" "}
-              and{" "}
-              <span className="underline decoration-indigo-400">
-                centralized
-              </span>{" "}
-              solution.
+              <span className="underline decoration-indigo-400">secure</span> and{" "}
+              <span className="underline decoration-indigo-400">centralized</span> solution.
             </p>
 
             {/* Features Section */}
@@ -157,32 +140,18 @@ const About: React.FC = () => {
                   }}
                   className="flex items-center gap-3 bg-gray-100 dark:bg-gray-700 p-3 rounded-lg shadow-sm"
                 >
-                  <span className="text-indigo-600 dark:text-indigo-400 text-lg">
-                    {feature}
-                  </span>
+                  <span className="text-indigo-600 dark:text-indigo-400 text-lg">{feature}</span>
                 </motion.div>
               ))}
             </motion.div>
 
             <p className="text-gray-700 dark:text-gray-300 mt-6 leading-relaxed text-center md:text-left">
               Whether you&apos;re a{" "}
-              <strong className="text-indigo-600 dark:text-indigo-400">
-                solo developer
-              </strong>{" "}
-              or part of a
-              <strong className="text-indigo-600 dark:text-indigo-400">
-                {" "}
-                large team
-              </strong>
+              <strong className="text-indigo-600 dark:text-indigo-400">solo developer</strong> or
+              part of a<strong className="text-indigo-600 dark:text-indigo-400"> large team</strong>
               , Storenv gives you the tools to manage your environment variables{" "}
-              <span className="underline decoration-indigo-400">
-                securely
-              </span>{" "}
-              and{" "}
-              <span className="underline decoration-indigo-400">
-                efficiently
-              </span>
-              .
+              <span className="underline decoration-indigo-400">securely</span> and{" "}
+              <span className="underline decoration-indigo-400">efficiently</span>.
             </p>
           </div>
         </motion.div>

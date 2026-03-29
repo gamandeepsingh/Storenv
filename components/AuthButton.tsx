@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, Twitter, Mail, Loader2 } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, Twitter, Mail, Loader2 } from "lucide-react";
 
 interface AuthButtonProps {
   provider: string;
@@ -16,9 +16,9 @@ interface Provider {
 
 const getProviderIcon = (provider: string) => {
   switch (provider.toLowerCase()) {
-    case 'github':
+    case "github":
       return <Github size={20} />;
-    case 'twitter':
+    case "twitter":
       return <Twitter size={20} />;
     default:
       return <Mail size={20} />;
@@ -27,14 +27,14 @@ const getProviderIcon = (provider: string) => {
 
 const getProviderColor = (provider: string): string => {
   switch (provider.toLowerCase()) {
-    case 'github':
-      return 'bg-gray-900 hover:bg-gray-800 text-white';
-    case 'twitter':
-      return 'bg-[#1DA1F2] hover:bg-[#1a8cd8] text-white';
-    case 'google':
-      return 'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300';
+    case "github":
+      return "bg-gray-900 hover:bg-gray-800 text-white";
+    case "twitter":
+      return "bg-[#1DA1F2] hover:bg-[#1a8cd8] text-white";
+    case "google":
+      return "bg-white hover:bg-gray-50 text-gray-900 border border-gray-300";
     default:
-      return 'bg-indigo-600 hover:bg-indigo-500 text-white';
+      return "bg-indigo-600 hover:bg-indigo-500 text-white";
   }
 };
 
@@ -42,9 +42,10 @@ export const AuthButton: React.FC<AuthButtonProps> = ({
   provider,
   onClick,
   isLoading = false,
-  className = '',
+  className = "",
 }) => {
-  const baseClasses = 'flex items-center justify-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm';
+  const baseClasses =
+    "flex items-center justify-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-sm";
   const providerColor = getProviderColor(provider);
   const icon = getProviderIcon(provider);
 
@@ -58,7 +59,7 @@ export const AuthButton: React.FC<AuthButtonProps> = ({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        type: 'spring',
+        type: "spring",
         stiffness: 500,
         damping: 30,
       }}
@@ -83,7 +84,7 @@ export const AuthButtonGroup: React.FC<{
   onProviderClick: (providerId: string) => void;
   isLoading?: boolean;
   className?: string;
-}> = ({ providers, onProviderClick, isLoading, className = '' }) => {
+}> = ({ providers, onProviderClick, isLoading, className = "" }) => {
   return (
     <div className={`flex flex-col space-y-2 w-full ${className}`}>
       {Object.values(providers).map((provider) => (

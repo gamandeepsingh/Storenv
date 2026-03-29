@@ -22,9 +22,9 @@ export default function RootLayout({
       <html lang="en">
         <body className="">
           <Navbar />
-          <Suspense fallback={<Loading/>}>
-          <Toaster position="bottom-center" />
-          {children}
+          <Suspense fallback={<Loading />}>
+            <Toaster position="bottom-center" />
+            {children}
           </Suspense>
           <Footer />
         </body>

@@ -30,12 +30,10 @@ export async function POST(req: NextRequest) {
     }
 
     // Encrypt the environment variable values
-    const encryptedEnvlist = envlist.map(
-      (env: { name: string; value: string }) => ({
-        name: env.name,
-        value: encryptValue(env.value),
-      })
-    );
+    const encryptedEnvlist = envlist.map((env: { name: string; value: string }) => ({
+      name: env.name,
+      value: encryptValue(env.value),
+    }));
 
     let env = await Env.findOne({ projectName, user: user._id });
 
@@ -60,9 +58,6 @@ export async function POST(req: NextRequest) {
     );
   } catch (error) {
     console.error("Error saving environment variables:", error);
-    return NextResponse.json(
-      { message: "Failed to save environment variables" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Failed to save environment variables" }, { status: 500 });
   }
 }

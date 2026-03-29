@@ -4,17 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Loading from "../loading";
 import copy from "clipboard-copy";
-import {
-  Copy,
-  Check,
-  Plus,
-  X,
-  Loader,
-  Edit,
-  Eye,
-  EyeOff,
-  Trash2,
-} from "lucide-react";
+import { Copy, Check, Plus, X, Loader, Edit, Eye, EyeOff, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 // import { Metadata } from "next";
@@ -40,9 +30,7 @@ const EnvPage: React.FC = () => {
   const [envs, setEnvs] = useState<EnvProject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
-    {}
-  );
+  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
   const [editingProject, setEditingProject] = useState<string | null>(null);
   const [editedEnv, setEditedEnv] = useState<EnvProject | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -64,9 +52,7 @@ const EnvPage: React.FC = () => {
       const data: EnvProject[] = await response.json();
       setEnvs(data);
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "An unknown error occurred"
-      );
+      setError(err instanceof Error ? err.message : "An unknown error occurred");
     } finally {
       setLoading(false);
     }
@@ -123,9 +109,7 @@ const EnvPage: React.FC = () => {
   };
 
   const copyEntireProject = (env: EnvProject) => {
-    const text = env.envlist
-      .map((item) => `${item.name}=${item.value}`)
-      .join("\n");
+    const text = env.envlist.map((item) => `${item.name}=${item.value}`).join("\n");
     handleCopy(text, env._id);
   };
 
@@ -139,11 +123,7 @@ const EnvPage: React.FC = () => {
     setEditedEnv(null);
   };
 
-  const updateEnvVariable = (
-    index: number,
-    field: keyof EnvVariable,
-    value: string
-  ) => {
+  const updateEnvVariable = (index: number, field: keyof EnvVariable, value: string) => {
     if (editedEnv) {
       const updatedEnvlist = [...editedEnv.envlist];
       updatedEnvlist[index] = { ...updatedEnvlist[index], [field]: value };
@@ -197,8 +177,7 @@ const EnvPage: React.FC = () => {
   };
 
   if (loading) return <Loading />;
-  if (error)
-    return <div className="mt-20 text-center text-red-500">Error: {error}</div>;
+  if (error) return <div className="mt-20 text-center text-red-500">Error: {error}</div>;
 
   return (
     <div className="w-full h-full bg-gradient-to-b from-gray-50 to-white pt-20 dark:from-gray-900 dark:to-gray-800">
@@ -279,18 +258,14 @@ const EnvPage: React.FC = () => {
                           <input
                             type="text"
                             value={item.name}
-                            onChange={(e) =>
-                              updateEnvVariable(index, "name", e.target.value)
-                            }
+                            onChange={(e) => updateEnvVariable(index, "name", e.target.value)}
                             className="flex-1 px-3 py-2 border rounded w-full text-black dark:text-white bg-gray-100 dark:bg-gray-400/20"
                             placeholder="Variable name"
                           />
                           <input
                             type="text"
                             value={item.value}
-                            onChange={(e) =>
-                              updateEnvVariable(index, "value", e.target.value)
-                            }
+                            onChange={(e) => updateEnvVariable(index, "value", e.target.value)}
                             className="flex-1 px-3 py-2 border rounded w-full text-black dark:text-white bg-gray-100 dark:bg-gray-400/20"
                             placeholder="Variable value"
                           />
@@ -317,11 +292,7 @@ const EnvPage: React.FC = () => {
                         disabled={isUpdating}
                         className="px-4 py-2 bg-indigo-500 dark:bg-white/20 text-white rounded hover:bg-indigo-600 dark:hover:bg-indigo-100 dark:hover:text-gray-600 disabled:opacity-50 w-full sm:w-auto transition-all duration-200 ease-in"
                       >
-                        {isUpdating ? (
-                          <Loader className="animate-spin" size={20} />
-                        ) : (
-                          "Update"
-                        )}
+                        {isUpdating ? <Loader className="animate-spin" size={20} /> : "Update"}
                       </button>
                     </div>
                   </form>
@@ -342,11 +313,7 @@ const EnvPage: React.FC = () => {
                           onClick={() => copyEntireProject(env)}
                           className="text-blue-500 dark:text-white/60 hover:text-blue-700 dark:hover:text-white transition-all duration-200 ease-in"
                         >
-                          {copiedStates[env._id] ? (
-                            <Check size={20} />
-                          ) : (
-                            <Copy size={20} />
-                          )}
+                          {copiedStates[env._id] ? <Check size={20} /> : <Copy size={20} />}
                         </button>
                         <button
                           onClick={() => handleDelete(env._id)}
@@ -368,18 +335,20 @@ const EnvPage: React.FC = () => {
                           <div className="flex items-center">
                             <span className="block md:hidden text-xs sm:text-base text-gray-600 dark:text-white/50 mr-4 font-mono bg-gray-100 dark:bg-white/20 px-3 py-2 rounded-md">
                               {visibleValues[`${env._id}-${index}`]
-                                ? item.value.length>10 ? item.value.slice(0, 10) + "..." : item.value
+                                ? item.value.length > 10
+                                  ? item.value.slice(0, 10) + "..."
+                                  : item.value
                                 : "••••••••"}
                             </span>
                             <span className="hidden md:block text-xs sm:text-base text-gray-600 dark:text-white/50 mr-4 font-mono bg-gray-100 dark:bg-white/20 px-3 py-2 rounded-md">
                               {visibleValues[`${env._id}-${index}`]
-                                ? item.value.length>30 ? item.value.slice(0, 30) + "..." : item.value
+                                ? item.value.length > 30
+                                  ? item.value.slice(0, 30) + "..."
+                                  : item.value
                                 : "••••••••"}
                             </span>
                             <button
-                              onClick={() =>
-                                toggleValueVisibility(env._id, index)
-                              }
+                              onClick={() => toggleValueVisibility(env._id, index)}
                               className="text-blue-500 dark:text-white/60 hover:text-blue-700 dark:hover:text-white transition-all duration-200 ease-in mr-2"
                             >
                               {visibleValues[`${env._id}-${index}`] ? (
@@ -390,26 +359,19 @@ const EnvPage: React.FC = () => {
                             </button>
                             <button
                               onClick={() =>
-                                handleCopy(
-                                  `${item.name}=${item.value}`,
-                                  `${env._id}-${index}`
-                                )
+                                handleCopy(`${item.name}=${item.value}`, `${env._id}-${index}`)
                               }
                               className="text-blue-500 dark:text-white/60 hover:text-blue-700 dark:hover:text-white transition-all duration-200 ease-in flex items-center space-x-1"
                             >
                               {copiedStates[`${env._id}-${index}`] ? (
                                 <>
                                   <Check size={16} />
-                                  <span className="text-xs hidden sm:flex">
-                                    Copied
-                                  </span>
+                                  <span className="text-xs hidden sm:flex">Copied</span>
                                 </>
                               ) : (
                                 <>
                                   <Copy size={16} />
-                                  <span className="text-xs hidden sm:flex">
-                                    Copy
-                                  </span>
+                                  <span className="text-xs hidden sm:flex">Copy</span>
                                 </>
                               )}
                             </button>

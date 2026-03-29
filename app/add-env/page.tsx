@@ -42,16 +42,10 @@ const AddEnv: React.FC = () => {
     }));
   };
 
-  const updateEnvVariable = (
-    index: number,
-    field: keyof EnvVariable,
-    value: string
-  ) => {
+  const updateEnvVariable = (index: number, field: keyof EnvVariable, value: string) => {
     setProjectEnv((prev) => ({
       ...prev,
-      envlist: prev.envlist.map((env, i) =>
-        i === index ? { ...env, [field]: value } : env
-      ),
+      envlist: prev.envlist.map((env, i) => (i === index ? { ...env, [field]: value } : env)),
     }));
   };
 
@@ -64,9 +58,7 @@ const AddEnv: React.FC = () => {
       return;
     }
 
-    const invalidEnv = projectEnv.envlist.find(
-      (env) => !env.name.trim() || !env.value.trim()
-    );
+    const invalidEnv = projectEnv.envlist.find((env) => !env.name.trim() || !env.value.trim());
     if (invalidEnv) {
       toast.error("Please fill in all environment variables");
       return;
@@ -167,9 +159,7 @@ const AddEnv: React.FC = () => {
                       <input
                         type="text"
                         value={env.name}
-                        onChange={(e) =>
-                          updateEnvVariable(index, "name", e.target.value)
-                        }
+                        onChange={(e) => updateEnvVariable(index, "name", e.target.value)}
                         className="w-full px-4 py-2 text-black dark:text-white bg-gray-100 dark:bg-gray-400/20 border border-gray-300 rounded-lg focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-white dark:focus:border-white outline-none"
                         placeholder="Variable name"
                         required
@@ -179,9 +169,7 @@ const AddEnv: React.FC = () => {
                       <input
                         type="text"
                         value={env.value}
-                        onChange={(e) =>
-                          updateEnvVariable(index, "value", e.target.value)
-                        }
+                        onChange={(e) => updateEnvVariable(index, "value", e.target.value)}
                         className="w-full px-4 py-2 text-black dark:text-white bg-gray-100 dark:bg-gray-400/20 border border-gray-300 rounded-lg focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-white dark:focus:border-white outline-none"
                         placeholder="Variable value"
                         required

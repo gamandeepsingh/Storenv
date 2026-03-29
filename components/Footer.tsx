@@ -2,14 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  GithubIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  HeartIcon,
-  MailIcon,
-  Send,
-} from "lucide-react";
+import { GithubIcon, TwitterIcon, LinkedinIcon, HeartIcon, MailIcon, Send } from "lucide-react";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import emailjs from "emailjs-com";
@@ -78,9 +71,7 @@ const Footer: React.FC = () => {
             className="space-y-4"
           >
             <Image
-              src={
-                "https://res.cloudinary.com/dib0peewu/image/upload/v1738348919/logo_lg5hvq.webp"
-              }
+              src={"https://res.cloudinary.com/dib0peewu/image/upload/v1738348919/logo_lg5hvq.webp"}
               alt="Storenv Logo"
               width={160}
               height={40}
@@ -96,8 +87,7 @@ const Footer: React.FC = () => {
               className="w-44 hidden dark:block"
             />
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-              Your secure solution for managing environment variables across
-              projects.
+              Your secure solution for managing environment variables across projects.
             </p>
           </motion.div>
 
@@ -108,9 +98,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Quick Links
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Quick Links</h3>
             <ul className="space-y-2">
               {Items.map((item, ind) => (
                 <li key={ind}>
@@ -132,21 +120,19 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Get in Touch
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Get in Touch</h3>
             <div className="flex space-x-4">
               {[
                 {
-                  link: "https://github.com/akshay-agnihotri/StoreEnv",
+                  link: "https://github.com/gamandeepsingh/StoreEnv",
                   icon: GithubIcon,
                 },
-                { link: "https://x.com/akshay_agni_96", icon: TwitterIcon },
+                { link: "https://x.com/gamandeepsingh4", icon: TwitterIcon },
                 {
-                  link: "https://www.linkedin.com/in/akshay-agnihotri-489926246/",
+                  link: "https://www.linkedin.com/in/gamandeep-singh-344001256/",
                   icon: LinkedinIcon,
                 },
-                { link: "mailto:agnihotriakshay36@gmail.com", icon: MailIcon },
+                { link: "mailto:gamandeepsingh4@gmail.com", icon: MailIcon },
               ].map(({ link, icon: Icon }, i) => (
                 <motion.a
                   key={i}
@@ -169,9 +155,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Send a Message
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Send a Message</h3>
             <form
               onSubmit={sendEmail}
               className="relative flex flex-col bg-white dark:bg-gray-700 rounded-lg shadow-sm p-4 space-y-3"
@@ -187,8 +171,7 @@ const Footer: React.FC = () => {
                 className="bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-600 transition-all flex items-center gap-1 self-end"
                 disabled={loading}
               >
-                <Send size={16} />{" "}
-                <span>{loading ? "Sending..." : "Send"}</span>
+                <Send size={16} /> <span>{loading ? "Sending..." : "Send"}</span>
               </button>
             </form>
           </motion.div>
@@ -202,12 +185,8 @@ const Footer: React.FC = () => {
           className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-600 dark:text-gray-400"
         >
           <p>
-            Made with{" "}
-            <HeartIcon
-              size={16}
-              className="inline-block text-indigo-500 mx-1"
-            />
-            © {currentYear} Storenv. All rights reserved.
+            Made with <HeartIcon size={16} className="inline-block text-indigo-500 mx-1" />©{" "}
+            {currentYear} Storenv. All rights reserved.
           </p>
         </motion.div>
       </div>

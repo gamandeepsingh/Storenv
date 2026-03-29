@@ -36,15 +36,19 @@ Storenv is a secure environment variable storage and management solution built w
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/gamandeepsingh/storenv
 ```
+
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create a `.env.` file in the root directory:
+
 ```bash
 MONGODB_URI=your_mongodb_uri
 NEXTAUTH_URL=http://localhost:3000
@@ -56,8 +60,8 @@ GITHUB_SECRET=your_github_client_secret
 ENCRYPTION_KEY=your_encryption_key
 ```
 
-
 4. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -82,15 +86,19 @@ npm run dev
 ## API Routes
 
 ### `POST /api/upload`
+
 Creates a new environment configuration
 
 ### `GET /api/envs`
+
 Retrieves all environment configurations for the authenticated user
 
 ### `PUT /api/upload/[id]`
+
 Updates an existing environment configuration
 
 ### `DELETE /api/upload/[id]`
+
 Deletes an environment configuration
 
 ## Contributing

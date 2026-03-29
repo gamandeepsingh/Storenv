@@ -4,13 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, User, Settings, Menu, X, LogOut, Sun, Moon } from "lucide-react";
 import { redirect, usePathname } from "next/navigation";
-import {
-  signIn,
-  signOut,
-  useSession,
-  getProviders,
-  ClientSafeProvider,
-} from "next-auth/react";
+import { signIn, signOut, useSession, getProviders, ClientSafeProvider } from "next-auth/react";
 import { Github } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 import logo from "@/public/logo.png";
@@ -28,10 +22,7 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const params = usePathname();
-  const [providers, setProviders] = useState<Record<
-    string,
-    ClientSafeProvider
-  > | null>(null);
+  const [providers, setProviders] = useState<Record<string, ClientSafeProvider> | null>(null);
   const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
@@ -75,13 +66,7 @@ const Navbar: React.FC = () => {
             className="flex items-center cursor-pointer"
             onClick={() => redirect("/")}
           >
-            <Image
-              src={logo}
-              alt="Storenv logo"
-              width={0}
-              height={0}
-              className="w-44"
-            />
+            <Image src={logo} alt="Storenv logo" width={0} height={0} className="w-44" />
           </motion.div>
 
           {/* Desktop Menu */}
@@ -95,11 +80,7 @@ const Navbar: React.FC = () => {
               onClick={toggleDarkMode}
               className="p-2 rounded-lg transition-colors bg-indigo-500 dark:bg-white/20"
             >
-              {!darkMode ? (
-                <Sun size={20} color="yellow" />
-              ) : (
-                <Moon size={20} color="white" />
-              )}
+              {!darkMode ? <Sun size={20} color="yellow" /> : <Moon size={20} color="white" />}
             </button>
 
             {!session &&
@@ -175,12 +156,7 @@ const Navbar: React.FC = () => {
               {navItems.map((item) => {
                 if (item.name === "Env" && !session) return null; // Only show "Env" for logged-in users
                 return (
-                  <NavItem
-                    key={item.name}
-                    item={item}
-                    onClick={toggleMenu}
-                    pathname={params}
-                  />
+                  <NavItem key={item.name} item={item} onClick={toggleMenu} pathname={params} />
                 );
               })}
               {/* Dark Mode Toggle Button (Mobile) */}
@@ -197,11 +173,7 @@ const Navbar: React.FC = () => {
                   damping: 30,
                 }}
               >
-                {!darkMode ? (
-                  <Sun size={20} color="yellow" />
-                ) : (
-                  <Moon size={20} />
-                )}
+                {!darkMode ? <Sun size={20} color="yellow" /> : <Moon size={20} />}
                 <span>Toggle Theme</span>
               </motion.button>
               {!session &&

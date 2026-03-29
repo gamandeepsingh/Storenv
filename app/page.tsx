@@ -2,14 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Shield,
-  Lock,
-  ArrowRight,
-  Terminal,
-  Code,
-  GitBranch,
-} from "lucide-react";
+import { Shield, Lock, ArrowRight, Terminal, Code, GitBranch } from "lucide-react";
 import { redirect } from "next/navigation";
 import Head from "next/head";
 
@@ -22,10 +15,7 @@ const Home: React.FC = () => {
           name="description"
           content="Store, manage, and protect your environment variables with military-grade encryption. Built for developers who take security seriously."
         />
-        <meta
-          name="keywords"
-          content="env, store env, secrets, security, environment variable,"
-        />
+        <meta name="keywords" content="env, store env, secrets, security, environment variable," />
         <meta property="og:title" content="Storenv | store env securily" />
         <meta
           property="og:description"
@@ -60,13 +50,11 @@ const Home: React.FC = () => {
           className="text-center w-full sm:max-w-4xl mx-auto"
         >
           <h1 className="text-5xl sm:text-7xl text-black dark:text-white md:text-6xl font-extrabold mb-6 pt-20">
-            Secure Your Secrets with{" "}
-            <span className="text-indigo-500">Storenv</span>
+            Secure Your Secrets with <span className="text-indigo-500">Storenv</span>
           </h1>
           <p className="text-base md:text-xl text-gray-600 dark:text-gray-400 mb-8">
-            Store, manage, and protect your environment variables with
-            military-grade encryption. Built for developers who take security
-            seriously.
+            Store, manage, and protect your environment variables with military-grade encryption.
+            Built for developers who take security seriously.
           </p>
           <motion.button
             className={`w-fit flex items-center px-4 py-2 rounded-md text-base sm:text-xl font-medium transition-colors bg-indigo-600 dark:bg-white/20 text-white mx-auto`}
@@ -117,17 +105,12 @@ const Home: React.FC = () => {
               className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg flex flex-col items-center text-center"
             >
               <div className="w-14 h-14 bg-indigo-100 dark:bg-indigo-700 rounded-full flex items-center justify-center mb-4">
-                <feature.icon
-                  className="text-indigo-600 dark:text-yellow-400"
-                  size={28}
-                />
+                <feature.icon className="text-indigo-600 dark:text-yellow-400" size={28} />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">
-                {feature.desc}
-              </p>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">{feature.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -142,9 +125,7 @@ const Home: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              How It Works
-            </h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
               Simple, secure, and straightforward.
             </p>
@@ -176,17 +157,12 @@ const Home: React.FC = () => {
                 className="flex flex-col items-center text-center"
               >
                 <div className="w-16 h-16 bg-indigo-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
-                  <step.icon
-                    className="text-indigo-600 dark:text-yellow-400"
-                    size={32}
-                  />
+                  <step.icon className="text-indigo-600 dark:text-yellow-400" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mt-2">
-                  {step.desc}
-                </p>
+                <p className="text-gray-600 dark:text-gray-400 mt-2">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -202,12 +178,10 @@ const Home: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="bg-indigo-600 dark:bg-gray-800 rounded-2xl p-4 sm:p-10 md:p-14 text-center text-white shadow-lg"
           >
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Secure Your Environment Variables?
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Secure Your Environment Variables?</h2>
             <p className="text-lg text-indigo-100 mb-6">
-              Join thousands of developers who trust Storenv with their
-              sensitive configuration data.
+              Join thousands of developers who trust Storenv with their sensitive configuration
+              data.
             </p>
             <motion.button
               className="px-6 py-3 bg-indigo-500 text-indigo-900 font-semibold text-lg rounded-lg shadow-md transition-all hover:bg-indigo-400"
