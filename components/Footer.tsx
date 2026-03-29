@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               {[
                 {
-                  link: "https://github.com/gamandeepsingh/StoreEnv",
+                  link: "https://github.com/gamandeepsingh/Storenv",
                   icon: GithubIcon,
                 },
                 { link: "https://x.com/gamandeepsingh4", icon: TwitterIcon },
